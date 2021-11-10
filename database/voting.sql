@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2021 at 04:34 PM
+-- Generation Time: Nov 10, 2021 at 05:36 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -32,6 +32,16 @@ CREATE TABLE `kandidat` (
   `kandidat` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `kandidat`
+--
+
+INSERT INTO `kandidat` (`idKandidat`, `kandidat`) VALUES
+('a', 'Dr. dr. Muhammad Eko Irawanto, Sp.KK(K), FINSDV, FAADV'),
+('b', 'DR. Dr. Istar Yuliadi, M.Si'),
+('c', 'DR. Dr. Senyum Indrakila, Sp.M'),
+('d', 'Dr. Wahyu Indianto, MH');
+
 -- --------------------------------------------------------
 
 --
@@ -57,20 +67,42 @@ CREATE TABLE `token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `token`
+--
+
+INSERT INTO `token` (`idToken`, `token`, `used`) VALUES
+('T01', 'a', 1),
+('T02', 'b', 1),
+('T03', 'c', 1),
+('T04', 'd', 1),
+('T05', 'e', 1);
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `kandidat`
+--
+ALTER TABLE `kandidat`
+  ADD PRIMARY KEY (`idKandidat`),
+  ADD KEY `idKandidat` (`idKandidat`);
 
 --
 -- Indexes for table `pemilih`
 --
 ALTER TABLE `pemilih`
-  ADD PRIMARY KEY (`idPemilih`);
+  ADD PRIMARY KEY (`idPemilih`),
+  ADD KEY `idPemilih` (`idPemilih`),
+  ADD KEY `idToken` (`idToken`,`idKandidat`),
+  ADD KEY `idKandidat` (`idKandidat`);
 
 --
 -- Indexes for table `token`
 --
 ALTER TABLE `token`
-  ADD PRIMARY KEY (`idToken`);
+  ADD PRIMARY KEY (`idToken`),
+  ADD KEY `idToken` (`idToken`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -80,7 +112,18 @@ ALTER TABLE `token`
 -- AUTO_INCREMENT for table `pemilih`
 --
 ALTER TABLE `pemilih`
-  MODIFY `idPemilih` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPemilih` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `pemilih`
+--
+ALTER TABLE `pemilih`
+  ADD CONSTRAINT `pemilih_ibfk_1` FOREIGN KEY (`idToken`) REFERENCES `token` (`idToken`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pemilih_ibfk_2` FOREIGN KEY (`idKandidat`) REFERENCES `kandidat` (`idKandidat`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
