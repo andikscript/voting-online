@@ -48,7 +48,7 @@ app.post('/search',(req, res) => {
       };
 
       if (results[0] == undefined) {
-        res.redirect("used");
+        res.redirect("false");
       } else if (results[0]["used"] === 0 ) {
         res.redirect("used");
       } else {
@@ -100,6 +100,11 @@ app.get('/result',(req, res) => {
 //route untuk used
 app.get('/used',(req, res) => {
     res.render('used',{});
+});
+
+//route untuk used
+app.get('/false',(req, res) => {
+    res.render('false',{});
 });
 
 const PORT = process.env.PORT || 8000;
