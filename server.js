@@ -50,7 +50,7 @@ app.post('/search',(req, res) => {
       if (results[0] == undefined) {
         res.redirect("false");
       } else if (results[0]["used"] === 0 ) {
-        res.redirect("false");
+        res.redirect("used");
       } else {
         res.redirect(
           "vote?id=" + results[0]["used"] + "&idToken=" + results[0]["idToken"]
@@ -66,7 +66,7 @@ app.get('/vote',(req, res) => {
           idToken: req.query.idToken
         });
     } else {
-        res.redirect("used");
+        res.redirect("false");
     }
 });
 
