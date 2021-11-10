@@ -102,8 +102,9 @@ app.get('/used',(req, res) => {
     res.render('used',{});
 });
 
- 
+const PORT = process.env.PORT || 8000;
+
 //server listening
-app.listen(8000, () => {
+app.listen(PORT, () => {
   console.log('Server is running at port 8000');
 });
