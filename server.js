@@ -12,11 +12,11 @@ const app = express();
  
 //konfigurasi koneksi
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'voting',
-  multipleStatements: true
+  host: "voting.cmjjmqqbgu6k.ap-southeast-1.rds.amazonaws.com",
+  user: "andik",
+  password: "AndikVoting123#",
+  database: "voting",
+  multipleStatements: true,
 });
  
 //connect ke database
