@@ -59,9 +59,27 @@
                     </table>
                 </div>
             </div>
-            </div>
-        </div>
+            <section class="page-section" id="contact">
+                <div class="container">
+                    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Total Pemilih</h2>
+                    <div class="divider-custom">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 ms-auto">
+                            <center><p class="lead">Yang Belum Memilih</p></center>
+                            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{no}}</h2>
+                        </div>
+                        <div class="col-lg-4 me-auto">
+                            <center>
+                                <p class="lead">Yang Sudah Memilih</p>
+                                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{yes}}</h2>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </section>
     </section>
+    
     <script type="text/javascript">
     (function(window, location) {
         history.replaceState(null, document.title, location.pathname+"#!/history");

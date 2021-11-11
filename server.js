@@ -83,16 +83,19 @@ app.post('/kandidat',(req, res) => {
 //route untuk result
 app.get('/result',(req, res) => {
   let arr = [];
-  let sql = "SELECT kandidat FROM `kandidat` ORDER BY `kandidat`.`idKandidat` ASC; SELECT COUNT(idKandidat) FROM pemilih WHERE idKandidat = 'a'; SELECT COUNT(idKandidat) FROM pemilih WHERE idKandidat = 'b'; SELECT COUNT(idKandidat) FROM pemilih WHERE idKandidat = 'c'; SELECT COUNT(idKandidat) FROM pemilih WHERE idKandidat = 'd'";
-  let query = conn.query(sql, [0,1,2,3,4], (err, results) => {
+  let sql =
+    "SELECT kandidat FROM `kandidat` ORDER BY `kandidat`.`idKandidat` ASC; SELECT COUNT(idKandidat) FROM pemilih WHERE idKandidat = 'a'; SELECT COUNT(idKandidat) FROM pemilih WHERE idKandidat = 'b'; SELECT COUNT(idKandidat) FROM pemilih WHERE idKandidat = 'c'; SELECT COUNT(idKandidat) FROM pemilih WHERE idKandidat = 'd'; SELECT COUNT(used) FROM token WHERE used=1; SELECT COUNT(used) FROM token WHERE used=0";
+  let query = conn.query(sql, [0,1,2,3,4,5,6], (err, results) => {
     if(err) throw err;
     arr.push(results[1][0]);
     arr.push(results[2][0]);
     arr.push(results[3][0]);
     arr.push(results[4][0]);
-    res.render('result',{
+    res.render("result", {
       results: results[0],
-      perolehan: arr
+      perolehan: arr,
+      no: results[5][0]["COUNT(used)"],
+      yes: results[6][0]["COUNT(used)"],
     });
   });
 });
