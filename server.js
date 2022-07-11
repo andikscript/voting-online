@@ -12,9 +12,9 @@ const app = express();
  
 //konfigurasi koneksi
 const conn = mysql.createConnection({
-  host: "voting.cmjjmqqbgu6k.ap-southeast-1.rds.amazonaws.com",
+  host: "localhost",
   user: "andik",
-  password: "AndikVoting123#",
+  password: "andik",
   database: "voting",
   multipleStatements: true,
 });
