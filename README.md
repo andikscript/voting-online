@@ -1,5 +1,5 @@
 # voting-online
-voting online basis node js dengan menggunakan token
+voting online basis node js dengan menggunakan token sekali pakai
 
 ## Home
 <img src="https://user-images.githubusercontent.com/58913447/178320006-8db53a30-4e5b-4b2d-b19e-c8ff3f66694b.jpg" width="670" height="350"/>
